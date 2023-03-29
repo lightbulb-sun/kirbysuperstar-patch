@@ -20,6 +20,32 @@ org $3ebb8
         lda     #!MASK_BUTTON_X
 
 
+; fix controls for AI
+
+; was #$8000
+; B => A for jumping, etc.
+org $06dc03
+        lda     #!MASK_BUTTON_A
+org $06dc88
+        lda     #!MASK_BUTTON_A
+org $06e09c
+        lda     #!MASK_BUTTON_A
+
+; was #$4000
+; Y => B for inhaling, etc.
+org $06e126
+        lda     #!MASK_BUTTON_B
+org $06e1c6
+        lda     #!MASK_BUTTON_B
+org $06e1e6
+        lda     #!MASK_BUTTON_B
+
+; was #$0080
+; A => X for helper, etc.
+org $06dd11
+        lda     #!MASK_BUTTON_X
+
+
 org $029ad4
         jml     ditch_copy_ability
 
