@@ -26,6 +26,15 @@ org $3ebb8
         lda     #!MASK_BUTTON_X
 
 
+; fix automated kirby movement during beginner's show
+org $d1b6fe
+        dw      #!MASK_BUTTON_A
+org $d1b7c5
+        dw      #!MASK_BUTTON_B
+org $d1b7dc
+        dw      #!MASK_BUTTON_B
+
+
 ; fix controls for AI
 
 ; was #$8000
