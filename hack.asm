@@ -34,6 +34,12 @@ org $d1b7c5
 org $d1b7dc
         dw      #!MASK_BUTTON_B
 
+; fix automated kirby movement during short explanation
+org $d1b7eb
+        dw      #!MASK_BUTTON_X
+org $d1b7f0
+        dw      #!MASK_BUTTON_X
+
 
 ; fix controls for AI
 
