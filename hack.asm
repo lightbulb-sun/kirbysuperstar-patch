@@ -9,62 +9,62 @@
 !CODE_X             = $64
 !CODE_Y             = $65
 
-
 sa1rom
 ; change controls
-org $3ebac
-        ; was #$4000
-        ; Y => B for inhaling, etc.
-        lda     #!MASK_BUTTON_B
-org $3ebb2
-        ; was #$8000
-        ; B => A/Y for jumping, etc.
-        lda     #(!MASK_BUTTON_A|!MASK_BUTTON_Y)
-org $3ebb8
-        ; was #$0080
-        ; A => X for helper, etc.
-        lda     #!MASK_BUTTON_X
+org $03ed24
+        ; rewrite held button presses for player 1
+        jsr     rewrite_button_presses
+org $03ed30
+        ; rewrite new button presses for player 1
+        jsr     rewrite_button_presses
+org $03ed64
+        ; rewrite held button presses for player 2
+        jsr     rewrite_button_presses
+org $03ed70
+        ; rewrite new button presses for player 2
+        jsr     rewrite_button_presses
 
+org $03f8d0
+rewrite_button_presses:
+        php
+        phx
 
-; fix automated kirby movement during beginner's show
-org $d1b6fe
-        dw      #!MASK_BUTTON_A
-org $d1b7c5
-        dw      #!MASK_BUTTON_B
-org $d1b7dc
-        dw      #!MASK_BUTTON_B
+        tax
+        lda.w   #$0000
+        pha
 
-; fix automated kirby movement during short explanation
-org $d1b7eb
-        dw      #!MASK_BUTTON_X
-org $d1b7f0
-        dw      #!MASK_BUTTON_X
-
-
-; fix controls for AI
-
-; was #$8000
-; B => A for jumping, etc.
-org $06dc03
-        lda     #!MASK_BUTTON_A
-org $06dc88
-        lda     #!MASK_BUTTON_A
-org $06e09c
-        lda     #!MASK_BUTTON_A
-
-; was #$4000
-; Y => B for inhaling, etc.
-org $06e126
-        lda     #!MASK_BUTTON_B
-org $06e1c6
-        lda     #!MASK_BUTTON_B
-org $06e1e6
-        lda     #!MASK_BUTTON_B
-
-; was #$0080
-; A => X for helper, etc.
-org $06dd11
-        lda     #!MASK_BUTTON_X
+        txa
+        and.w   #$3f30
+        sta     $01, s
+.turn_a_into_b
+        txa
+        and.w   #!MASK_BUTTON_A
+        xba
+        ora     $01, s
+        sta     $01, s
+.turn_b_into_y
+        txa
+        and.w   #!MASK_BUTTON_B
+        lsr
+        ora     $01, s
+        sta     $01, s
+.turn_x_into_a
+        txa
+        and.w   #!MASK_BUTTON_X
+        asl
+        ora     $01, s
+        sta     $01, s
+.turn_y_into_b
+        txa
+        and.w   #!MASK_BUTTON_Y
+        asl
+        ora     $01, s
+        sta     $01, s
+.end
+        pla
+        plx
+        plp
+        rts
 
 
 org $029ad4
@@ -74,10 +74,10 @@ org $029ad4
 org $02fa81
 ditch_copy_ability:
         pha
-        and     #!MASK_BUTTON_SELECT
+        and.w   #!MASK_BUTTON_SELECT
         bne     .pressedSelect
         pla
-        and     $36b2, y
+        and.w   $36b2, y
         clc
         bne     .pressedHelperButton
         jml     $029ada

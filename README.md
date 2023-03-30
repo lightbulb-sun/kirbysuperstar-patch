@@ -9,12 +9,17 @@ by Tech097 for the US version of the SNES game Kirby Super Star:
 * Change button ``[B]`` to ``[A]``/``[Y]`` (for jumping, etc.)
 * Change button ``[A]`` to ``[X]`` (for helper, etc.)
 * Press ``[Select]`` to ditch copy ability without producing a helper
+* Change explanation text to new buttons
 
 ## Download
 The latest release can be found on the
 [releases page](https://github.com/lightbulb-sun/kirbysuperstar-patch/releases).
 Patch the original ROM with one of the `.bsdiff`, `.ips` or `.bps` files
 to create the hack.
+
+## Bugs
+* Wrong button presses during demo
+* Arrows point at wrong buttons during explanations
 
 ## License
 Distributed under the MIT License. See LICENSE for more information.
