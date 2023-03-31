@@ -4,6 +4,15 @@
 !MASK_BUTTON_Y      = $4000
 !MASK_BUTTON_B      = $8000
 
+!ARROW_BUTTON_DOWN  = $0010
+!ARROW_BUTTON_A     = $0040
+!ARROW_BUTTON_B     = $0080
+!ARROW_BUTTON_X     = $0100
+!ARROW_BUTTON_Y     = $0200
+!ARROW_TARGET       = $1000
+!ARROW_DONUT        = $4000
+!ARROW_CANDY        = $8000
+
 !CODE_A             = $4d
 !CODE_B             = $4e
 !CODE_X             = $64
@@ -92,6 +101,75 @@ ditch_copy_ability:
 .pressedSelect
         pla
         jml     $029b18
+
+
+
+; fix arrows
+; Short explanation
+org $d1d8e7
+        dw      !ARROW_BUTTON_B
+org $d1d90e
+        dw      !ARROW_BUTTON_X
+org $d1d92b
+        dw      !ARROW_BUTTON_X
+
+; Beginner's Show #1, Jumping
+org $d1c2f7
+        ; Jump by pushing B.
+        dw      !ARROW_BUTTON_A
+org $d1c35f
+        ; Now let's take the food off the obstacle...
+        dw      !ARROW_BUTTON_A|!ARROW_DONUT
+org $d1c3f7
+        ; Food restores energy.
+        dw      !ARROW_BUTTON_A
+org $d1c42b
+        ; There is food up in the sky.
+        dw      !ARROW_BUTTON_A|!ARROW_CANDY
+
+;; Beginner's Show #1, Inhaling
+org $d1c54f
+        ; By pushing Y, Kirby will inhale almost anything in his path.
+        dw      !ARROW_BUTTON_B
+org $d1c64c
+        ; Now let's practice inhaling an enemy.
+        dw      !ARROW_BUTTON_B
+org $d1c6a0
+        ; Push Y to spit out a star....
+        dw      !ARROW_BUTTON_B
+org $d1c6ae
+        ; ... This is your attack.
+        dw      !ARROW_BUTTON_B|!ARROW_TARGET
+org $d1be60
+        ; This time could be a bit difficult.
+        lda     #!ARROW_BUTTON_B
+org $d1c888
+        ; Jump and spit out a star.
+        ; Push A, then B quickly.
+        dw      !ARROW_BUTTON_A|!ARROW_BUTTON_B
+org $d1c8a4
+        ; Jump and spit out a star.
+        ; Push A, then B quickly. (cont'd)
+        dw      !ARROW_BUTTON_A|!ARROW_BUTTON_B|!ARROW_TARGET
+
+
+; Beginner's Show #2, Swallow
+org $d1cb74
+        dw      !ARROW_BUTTON_X
+org $d1cc03
+        dw      !ARROW_BUTTON_B
+org $d1cd9d
+        dw      !ARROW_BUTTON_X
+org $d1cf1e
+        dw      !ARROW_BUTTON_X
+org $d1cf61
+        dw      !ARROW_BUTTON_X
+org $d1cfb0
+        dw      !ARROW_BUTTON_B
+org $d1cfc8
+        dw      !ARROW_BUTTON_X
+org $d1d13b
+        dw      !ARROW_BUTTON_A|!ARROW_BUTTON_DOWN
 
 
 ; fix instruction text
