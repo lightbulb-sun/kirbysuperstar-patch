@@ -9,6 +9,12 @@
 !CODE_X             = $64
 !CODE_Y             = $65
 
+!TILE_PAUSE_A       = $4a
+!TILE_PAUSE_B       = $4b
+!TILE_PAUSE_X       = $4c
+!TILE_PAUSE_Y       = $4d
+
+
 sa1rom
 ; change controls
 org $03ed24
@@ -180,3 +186,27 @@ org $b3258
 org $b3292
         ; The A Button will also create a helper...
         db      !CODE_X
+
+
+; fix instructions in pause menu
+org $2c9b9f
+        ; Inhale an enemy by pushing Y ...
+        db      !TILE_PAUSE_B
+org $2c9bd4
+;       ; ... and swallow it by pushing A.
+        db      !TILE_PAUSE_X
+org $2ca00e
+        ; Press A again to create a helper
+        db      !TILE_PAUSE_X
+org $2abb74
+        ; Y:Inhaling/Spitting out
+        db      !TILE_PAUSE_B
+org $2abbc8
+        ; B:Jump/Hovering
+        db      !TILE_PAUSE_A
+org $2abbf7
+        ; A:Copy an enemy/Make a helper
+        db      !TILE_PAUSE_X
+org $2ca9e7
+        ; Down+B :Sliding
+        db      !TILE_PAUSE_A
