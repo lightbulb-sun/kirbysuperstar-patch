@@ -81,6 +81,51 @@ rewrite_button_presses:
         plp
         rts
 
+rewrite_button_presses_inverse:
+        php
+        phx
+
+        tax
+        lda.w   #$0000
+        pha
+
+        txa
+        and.w   #$3f30
+        sta     $01, s
+.turn_b_into_a
+        txa
+        and.w   #!MASK_BUTTON_B
+        xba
+        ora     $01, s
+        sta     $01, s
+.turn_y_into_b
+        txa
+        and.w   #!MASK_BUTTON_Y
+        asl
+        ora     $01, s
+        sta     $01, s
+.turn_a_into_x
+        txa
+        and.w   #!MASK_BUTTON_A
+        lsr
+        ora     $01, s
+        sta     $01, s
+.end
+        pla
+        plx
+        plp
+        rts
+
+fix_demo:
+        jsr     rewrite_button_presses_inverse
+        sta     $32c4
+        inx
+        rtl
+
+
+org $00cb37
+        jsl     fix_demo
+
 
 org $029ad4
         jml     ditch_copy_ability

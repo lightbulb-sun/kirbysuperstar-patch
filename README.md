@@ -17,8 +17,5 @@ The latest release can be found on the
 Patch the original ROM with one of the `.bsdiff`, `.ips` or `.bps` files
 to create the hack.
 
-## Bugs
-* Wrong button presses during demo
-
 ## License
 Distributed under the MIT License. See LICENSE for more information.
