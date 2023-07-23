@@ -217,6 +217,208 @@ org $d1d13b
         dw      !ARROW_BUTTON_A|!ARROW_BUTTON_DOWN
 
 
+; fix instructions in pause menu for copy abilities
+; cutter (0x01)
+org $ebdac1
+        db      !TILE_PAUSE_B
+org $eabde8
+        db      !TILE_PAUSE_B
+
+; beam (0x02)
+org $ecb496
+        db      !TILE_PAUSE_B
+org $eb0ad8
+        db      !TILE_PAUSE_B
+org $eb0b25
+        db      !TILE_PAUSE_A
+org $eb0b7b
+        db      !TILE_PAUSE_B
+org $ec35fb
+        db      !TILE_PAUSE_B
+
+; yoyo (0x03)
+org $ebaf29
+        db      !TILE_PAUSE_B
+org $ecab9f
+        db      !TILE_PAUSE_B
+
+; ninja (0x04)
+org $ebcd78
+        db      !TILE_PAUSE_B
+org $ebce11
+        db      !TILE_PAUSE_B
+org $eb0dfc
+        db      !TILE_PAUSE_B
+org $ead2f6
+        db      !TILE_PAUSE_B
+org $ead3a9
+        db      !TILE_PAUSE_A
+
+; wing (0x05)
+org $ebd3ab
+        db      !TILE_PAUSE_B
+org $ec178a
+        db      !TILE_PAUSE_B
+org $ec17d6
+        db      !TILE_PAUSE_A
+
+; fighter (0x06)
+org $eaf617
+        db      !TILE_PAUSE_B
+org $eaf638
+        db      !TILE_PAUSE_B
+org $eb101b
+        db      !TILE_PAUSE_B
+org $eb1083
+        db      !TILE_PAUSE_B
+org $eb10b8
+        db      !TILE_PAUSE_B
+org $ecb2d0
+        db      !TILE_PAUSE_B
+org $ec2025
+        db      !TILE_PAUSE_B
+
+; jet (0x07)
+org $ec2330
+        db      !TILE_PAUSE_B
+org $ede827
+        db      !TILE_PAUSE_B
+org $ede87e
+        db      !TILE_PAUSE_B
+org $ebce66
+        db      !TILE_PAUSE_B
+org $ebcf04
+        db      !TILE_PAUSE_B
+org $ebcf4c
+        db      !TILE_PAUSE_B
+org $ede11e
+        db      !TILE_PAUSE_A
+org $edf221
+        db      !TILE_PAUSE_A
+
+; sword (0x08)
+org $ec9bee
+        db      !TILE_PAUSE_B
+org $edefec
+        db      !TILE_PAUSE_B
+org $edf048
+        db      !TILE_PAUSE_B
+org $eaffa9
+        db      !TILE_PAUSE_B
+
+; fire (0x09)
+org $ecae77
+        db      !TILE_PAUSE_B
+org $ec185f
+        db      !TILE_PAUSE_B
+org $ec187b
+        db      !TILE_PAUSE_B
+org $ec18f7
+        db      !TILE_PAUSE_B
+org $eb1338
+        db      !TILE_PAUSE_B
+org $eb1364
+        db      !TILE_PAUSE_A
+org $eb139d
+        db      !TILE_PAUSE_B
+
+; stone (0x0a)
+org $edea64
+        db      !TILE_PAUSE_B
+org $edea90
+        db      !TILE_PAUSE_B
+org $eca623
+        db      !TILE_PAUSE_B
+
+; bomb (0x0b)
+org $edf352
+        db      !TILE_PAUSE_B
+org $ecad92
+        db      !TILE_PAUSE_B
+org $ebb321
+        db      !TILE_PAUSE_B
+org $ebb3f4
+        db      !TILE_PAUSE_B
+
+; plasma (0x0c)
+
+; wheel (0x0d)
+org $ede24d
+        db      !TILE_PAUSE_A
+org $ede26a
+        db      !TILE_PAUSE_B
+
+; ice (0x0e)
+org $ebbcc3
+        db      !TILE_PAUSE_B
+org $ebbcef
+        db      !TILE_PAUSE_B
+org $ebbcf3
+        db      !TILE_PAUSE_B
+org $ebbd42
+        db      !TILE_PAUSE_B
+org $ebac36
+        db      !TILE_PAUSE_B
+
+; mirror (0x0f)
+org $ec9d77
+        db      !TILE_PAUSE_B
+org $ec9da2
+        db      !TILE_PAUSE_B
+
+; copy (0x10)
+org $ecb0d8
+        db      !TILE_PAUSE_B
+org $ebd1cd
+        db      !TILE_PAUSE_X
+
+; suplex (0x11)
+org $ede060
+        db      !TILE_PAUSE_B
+org $ebb130
+        db      !TILE_PAUSE_B
+org $ebb18d
+        db      !TILE_PAUSE_B
+org $ebbede
+        db      !TILE_PAUSE_B
+org $ebbf01
+        db      !TILE_PAUSE_A
+
+; hammer (0x12)
+org $ebbdb3
+        db      !TILE_PAUSE_B
+org $ebbe04
+        db      !TILE_PAUSE_B
+org $ec16c7
+        db      !TILE_PAUSE_B
+org $ec170a
+        db      !TILE_PAUSE_X
+
+; parasol (0x13)
+org $ec133b
+        db      !TILE_PAUSE_B
+org $ebc08c
+        db      !TILE_PAUSE_B
+
+; mike (0x14)
+org $e8ff03
+        db      !TILE_PAUSE_B
+
+; sleep (0x15)
+
+; paint (0x16)
+org $eb3a3d
+        db      !TILE_PAUSE_B
+
+; cook (0x17)
+org $ecac45
+        db      !TILE_PAUSE_B
+
+; crash (0x18)
+org $ec1aff
+        db      !TILE_PAUSE_B
+
+
 ; fix instruction text
 norom
 org $b1966
